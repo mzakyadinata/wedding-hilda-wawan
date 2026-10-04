@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import Reveal from "../components/Reveal";
 import { fetchWishes, submitWish } from "../services/wishes";
 import { timeAgo } from "../lib/time";
+import { containsBlockedWord } from "../lib/contentFilter";
 
 const COOLDOWN_MS = 15000;
 
@@ -69,16 +70,22 @@ export default function Wishes() {
     if (sending) return;
     const name = form.name.trim(),
       message = form.message.trim();
-    if (name.length < 2 || name.length > 80)
-      return setMsg({ type: "error", text: "Nama harus 2–80 karakter." });
-    if (message.length < 2 || message.length > 500)
-      return setMsg({ type: "error", text: "Ucapan harus 2–500 karakter." });
+    if (name.length < 2 || name.length > 50)
+      return setMsg({ type: "error", text: "Nama harus 2–50 karakter." });
+    if (message.length < 2 || message.length > 300)
+      return setMsg({ type: "error", text: "Ucapan harus 2–300 karakter." });
     if (Date.now() - lastSent.current < COOLDOWN_MS)
       return setMsg({
         type: "error",
         text: "Mohon tunggu sebentar sebelum mengirim lagi.",
       });
     if (form.website) return setForm({ name: "", message: "", website: "" }); // honeypot
+    if (containsBlockedWord(name) || containsBlockedWord(message)) {
+      return setMsg({
+        type: "error",
+        text: "Mohon gunakan kata-kata yang sopan dalam ucapan.",
+      });
+    }
     setSending(true);
     setMsg({ type: "", text: "" });
     try {
@@ -171,7 +178,7 @@ export default function Wishes() {
             aria-label="Nama"
             value={form.name}
             onChange={set("name")}
-            maxLength={80}
+            maxLength={50}
             autoComplete="name"
           />
           <textarea
@@ -180,8 +187,9 @@ export default function Wishes() {
             aria-label="Ucapan dan doa"
             value={form.message}
             onChange={set("message")}
-            maxLength={500}
+            maxLength={300}
           />
+          <div className="wish-counter">{form.message.length}/300</div>
           <button type="submit" disabled={sending}>
             {sending ? "Mengirim…" : "Kirim"}
           </button>
