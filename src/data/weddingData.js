@@ -29,7 +29,7 @@ export const weddingData = {
     {
       label: "RESEPSI",
       date: "Minggu, 18 Oktober 2026",
-      time: "10.00 – 20.00 WIB",
+      time: "10.00 – 21.00 WIB",
       venue: "Lapangan Desa Lebaksono, Kec. Pungging, Kab. Mojokerto",
     },
   ],
