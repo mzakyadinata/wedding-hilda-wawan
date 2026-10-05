@@ -48,8 +48,8 @@ export const weddingData = {
   gift: {
     accounts: [
       {
-        bank: "BCA",
-        logo: "images/bank/bca-logo.svg",
+        bank: "Mandiri",
+        logo: "images/bank/mandiri-logo.svg",
         number: "1410025590845",
         name: "Hilda Faizah Elhani",
       },
