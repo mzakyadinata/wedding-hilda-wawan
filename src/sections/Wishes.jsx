@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import Reveal from "../components/Reveal";
+import Fx from "../components/Fx";
 import { fetchWishes, submitWish } from "../services/wishes";
 import { timeAgo } from "../lib/time";
 import { containsBlockedWord } from "../lib/contentFilter";
@@ -157,12 +158,12 @@ export default function Wishes() {
   return (
     <Reveal id="wishes">
       <div className="wrap" ref={root}>
-        <div
-          className="label"
-          style={{ textAlign: "center", marginBottom: 20 }}
-        >
+        <Fx className="label center" from="down">
           UCAPAN &amp; DOA
-        </div>
+        </Fx>
+        <Fx as="h2" className="script sec-title" delay={0.05}>
+          Kirim Doa Restu
+        </Fx>
         <form className="wish-form" onSubmit={onSubmit} noValidate>
           <div className="sr-only-field" aria-hidden="true">
             <input

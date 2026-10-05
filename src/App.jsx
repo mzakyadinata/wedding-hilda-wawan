@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { AnimatePresence, LazyMotion, domAnimation, m, useReducedMotion } from 'framer-motion'
 import Cover from './sections/Cover'
 import Invitation from './layouts/Invitation'
-import FrameCorners from './components/FrameCorners'
+import NavDock from './components/NavDock'
 import Petals from './components/Petals'
 import MusicToggle from './components/MusicToggle'
 import { useAudio } from './hooks/useAudio'
@@ -27,9 +27,10 @@ export default function App() {
 
   return (
     <LazyMotion features={domAnimation} strict>
-      <FrameCorners />
       <Petals />
       <MusicToggle playing={playing} onToggle={toggle} />
+
+      {opened && <NavDock />}
 
       {opened && (
         <m.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: reduce ? 0.2 : 1, delay: reduce ? 0 : 0.35 }}>

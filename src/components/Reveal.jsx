@@ -1,16 +1,19 @@
-import { useEffect, useRef } from 'react'
+import { m, useReducedMotion } from 'framer-motion'
 
-// Reveal-on-scroll persis seperti mockup (class .reveal -> .in), tanpa re-render React.
+// Pembungkus section: fade-up halus saat masuk layar. Animasi detail ada di <Fx>.
 export default function Reveal({ as: Tag = 'section', className = '', children, ...props }) {
-  const ref = useRef(null)
-  useEffect(() => {
-    const el = ref.current
-    if (!el) return
-    const io = new IntersectionObserver(([e]) => {
-      if (e.isIntersecting) { el.classList.add('in'); io.disconnect() }
-    }, { threshold: 0.15 })
-    io.observe(el)
-    return () => io.disconnect()
-  }, [])
-  return <Tag ref={ref} className={`reveal ${className}`.trim()} {...props}>{children}</Tag>
+  const reduce = useReducedMotion()
+  const Comp = m[Tag]
+  return (
+    <Comp
+      className={`reveal ${className}`.trim()}
+      initial={reduce ? false : { opacity: 0, y: 22 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '0px 0px -6% 0px' }}
+      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+      {...props}
+    >
+      {children}
+    </Comp>
+  )
 }

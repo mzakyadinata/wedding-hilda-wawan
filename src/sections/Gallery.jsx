@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import Reveal from "../components/Reveal";
+import Fx from "../components/Fx";
 import Lightbox from "../components/LightBox";
 import { weddingData as d } from "../data/weddingData";
 
@@ -36,9 +37,12 @@ export default function Gallery() {
   return (
     <Reveal id="gallery">
       <div className="wrap">
-        <div className="label" style={{ marginBottom: 20 }}>
+        <Fx className="label center" from="down">
           GALERI
-        </div>
+        </Fx>
+        <Fx as="h2" className="script sec-title" delay={0.05}>
+          Momen Berharga
+        </Fx>
         <div className="gallery-grid" style={{ "--cols": cols }}>
           {columns.map((items, c) => (
             <div className="g-col" key={c}>
@@ -46,10 +50,15 @@ export default function Gallery() {
                 const first = i === 0; // foto pertama: bingkai lengkung, selalu 4/5
                 const ratio = first ? "4/5" : RATIOS[(c + row) % 2];
                 const cls = `g-item${first ? " g-arch" : ""}`;
+                const from = first ? "mask" : c % 2 ? "right" : "left";
                 return g.src ? (
-                  <button
+                  <Fx
+                    as="button"
                     key={i}
                     type="button"
+                    from={from}
+                    delay={row * 0.08}
+                    duration={1}
                     className={`${cls} g-btn`}
                     style={{ aspectRatio: ratio }}
                     onClick={() => setActive(photos.indexOf(g))}
@@ -61,7 +70,7 @@ export default function Gallery() {
                       loading="lazy"
                       decoding="async"
                     />
-                  </button>
+                  </Fx>
                 ) : (
                   <div
                     key={i}

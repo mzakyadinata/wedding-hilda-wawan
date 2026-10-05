@@ -1,5 +1,7 @@
 import { useState } from "react";
 import Reveal from "../components/Reveal";
+import Fx from "../components/Fx";
+import { Flora } from "../components/Ornaments";
 import { submitRsvp } from "../services/rsvp";
 
 const DONE_KEY = "rsvp-submitted";
@@ -105,9 +107,11 @@ export default function Rsvp() {
   };
   const loading = status === "loading";
   return (
-    <Reveal id="rsvp">
+    <Reveal id="rsvp" className="dark batik-dark">
+      <Flora corner="tl" className="on-dark" />
+      <Flora corner="br" className="on-dark" delay={0.2} />
       <div className="wrap">
-        <div className="card">
+        <Fx className="card" from="mask" duration={1.2}>
           <div className="label">RSVP</div>
           {status === "success" ? (
             <div className="rsvp-done" role="status">
@@ -219,7 +223,7 @@ export default function Rsvp() {
               </form>
             </>
           )}
-        </div>
+        </Fx>
       </div>
     </Reveal>
   );

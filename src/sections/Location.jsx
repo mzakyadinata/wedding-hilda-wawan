@@ -1,18 +1,21 @@
 import Reveal from "../components/Reveal";
+import Fx from "../components/Fx";
+import { Flora } from "../components/Ornaments";
 import { weddingData as d } from "../data/weddingData";
 
 export default function Location() {
   const { venue, address, googleMapsUrl, mapEmbedUrl } = d.location;
   return (
-    <Reveal id="location">
-      <div className="wrap">
-        <div className="label">LOKASI ACARA</div>
-        <h3 className="serif" style={{ marginTop: 8 }}>
+    <Reveal id="location" className="tint">
+      <Flora corner="bl" />
+      <div className="wrap loc-wrap">
+        <Fx className="label center" from="down">LOKASI ACARA</Fx>
+        <Fx as="h2" className="script sec-title" delay={0.05}>
           {venue}
-        </h3>
-        <p>{address}</p>
+        </Fx>
+        <Fx as="p" className="loc-address" delay={0.1}>{address}</Fx>
         {mapEmbedUrl ? (
-          <div className="map-embed">
+          <Fx className="map-embed" from="zoom" duration={1.1}>
             <iframe
               title={`Peta lokasi ${venue}`}
               src={mapEmbedUrl}
@@ -20,7 +23,7 @@ export default function Location() {
               referrerPolicy="no-referrer-when-downgrade"
               allowFullScreen
             />
-          </div>
+          </Fx>
         ) : (
           <div
             className="map-ph photoph"
