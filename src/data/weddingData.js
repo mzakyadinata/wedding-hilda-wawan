@@ -65,7 +65,7 @@ export const weddingData = {
     shipping: {
       recipient: "Wawan & Hilda",
       address:
-        "Lapangan Desa Lebaksono RT.01/ RW.05, Jalan Lebaksono,depan lapangan lebaksono ke timur pagar coklat, Kec.Pungging, Kab.Mojokerto, Jawa Timur 61384",
+        "Dusun Lebaksono RT.01/ RW.05, Jalan Lebaksono,depan lapangan lebaksono ke timur pagar coklat, Kec.Pungging, Kab.Mojokerto, Jawa Timur 61384",
     },
   },
   // Kosongkan src untuk placeholder. 'tall' = item setinggi 2 baris (sesuai mockup).
