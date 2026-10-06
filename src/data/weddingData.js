@@ -22,8 +22,9 @@ export const weddingData = {
   // Jam selesai acara (untuk tombol "Simpan ke Kalender"). Boleh dihapus; default +3 jam.
   weddingEnd: "2026-10-18T21:00:00+07:00",
   coverImage: "/images/couple/hero-cover.jpg",
+  countdownImage: "/images/couple/countdown.jpeg",
 
-  heroImage: "/images/couple/hero-image.webp", // contoh: '/images/couple/hero.webp'
+  heroImage: "/images/couple/hero-image.jpeg", // contoh: '/images/couple/hero.webp'
   heroTitle: ["Dengan penuh syukur,", "kami mengundang Anda"],
   quote: {
     text: "Dan di antara tanda-tanda kekuasaan-Nya, Dia menciptakan pasangan untukmu agar kamu merasa tenteram.",
@@ -64,7 +65,7 @@ export const weddingData = {
     shipping: {
       recipient: "Wawan & Hilda",
       address:
-        "Lapangan Desa Lebaksono, Desa Lebaksono, Kec. Pungging, Kab. Mojokerto, Jawa Timur",
+        "Lapangan Desa Lebaksono RT.01/ RW.05, Jalan Lebaksono,depan lapangan lebaksono ke timur pagar coklat, Kec.Pungging, Kab.Mojokerto, Jawa Timur 61384",
     },
   },
   // Kosongkan src untuk placeholder. 'tall' = item setinggi 2 baris (sesuai mockup).
