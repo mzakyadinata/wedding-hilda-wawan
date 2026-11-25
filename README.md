@@ -1,4 +1,4 @@
-# Naya & Arka — Undangan Pernikahan Digital
+# Hilda & Wawan — Undangan Pernikahan Digital
 
 React + Vite + Tailwind CSS v4 + Framer Motion + Supabase. Deploy ke Vercel.
 
