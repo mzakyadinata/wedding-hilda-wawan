@@ -15,7 +15,7 @@ npm run build            # production build
 |---|---|
 | Nama, orang tua, tanggal, acara, venue, alamat, **link Google Maps**, quote, gallery | `src/data/weddingData.js` |
 | Foto mempelai / hero / gallery | taruh di `public/images/...`, lalu isi path di `weddingData.js` |
-| Musik | timpa `public/audio/wedding-music.mp3` (file sekarang hanya placeholder hening) |
+| Musik | timpa `public/audio/wedding-music.mp3`  |
 | Gambar preview WhatsApp | timpa `public/images/og/og-image.jpg` (1200x630) |
 | Judul / deskripsi preview | `index.html` |
 
